@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Article from "./Article";
 import Header from "./Header";
 import Home from "./Home";
@@ -36,6 +36,7 @@ function App() {
           <Login onLogin={handleLogin} />
         </Route>
         <Route exact path="/members">
+          {!user && <Redirect to="/" />}
           <MemberArticles />
         </Route>
         <Route exact path="/">

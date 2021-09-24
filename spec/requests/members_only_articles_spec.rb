@@ -46,7 +46,7 @@ RSpec.describe "MembersOnlyArticles", type: :request do
       it 'returns an error message' do
         get '/members_only_articles'
   
-        expect(response.body).to include_json({ error: "Not authorized" })
+        expect(response.body).to include_json({ error: "You must be logged in to view these articles" })
       end
     end
 
@@ -60,7 +60,7 @@ RSpec.describe "MembersOnlyArticles", type: :request do
       it 'returns an error message' do
         get "/members_only_articles/#{Article.first.id}"
   
-        expect(response.body).to include_json({ error: "Not authorized" })
+        expect(response.body).to include_json({ error: "You must be logged in to view these articles" })
       end
     end
   end
